@@ -1,0 +1,106 @@
+Speech Kit Basics
+=================
+The Speech Kit library allows you to add voice recognition and text-to-speech services to your applications easily and quickly.  
+This library provides access to speech processing components hosted on a server through a clean asynchronous network service API, minimizing overhead and resource consumption.
+The Speech Kit library lets you provide fast voice search, dictation, and high-quality, multilingual text-to-speech functionality in your application.
+
+Speech Kit Architecture
+-----------------------
+The Speech Kit library is a full-featured, high-level library that automatically manages all the required low-level services.
+
+.. figure:: speech_kit_architecture.png
+
+    Speech Kit Architecture
+
+At the application level, there are two main components available to the developer: the recognizer and the text-to-speech synthesizer.
+
+In the library there are several coordinated processes:
+
+    * The library fully manages the audio system for recording and playback.
+
+    * The networking component manages the connection to the server and, at the start of a new request, automatically re-establishes connections that have timed-out.
+
+    * The end-of-speech detector determines when the user has stopped speaking and automatically stops recording.
+
+    * The encoding component compresses and decompresses the streaming audio to reduce bandwidth requirements and decrease latency.
+
+The server system is responsible for the majority of the work in the speech processing cycle.  
+The complete recognition or synthesis procedure is performed on the server, consuming or producing the streaming audio.  
+In addition, the server manages authentication as configured through the developer portal.
+
+Using Speech Kit
+----------------
+To use Speech Kit, you will need to have the Android SDK installed.  Instructions for installing the Android SDK can be found at http://developer.android.com/sdk/index.html.
+You can use the Speech Kit library in the same way that you would use any of the standard jar library. 
+
+To start using the Speech Kit library, add it to your new or existing project, as follows:
+
+    1. Copy the libs folder into the root of the project folder for your android project.  The libs folder contains an ``armeabi`` subfolder that contains the file ``libnmsp_vocoder_speex.so``.  This is a native library that is required to use Speech Kit.
+
+    2. From the menu select :menuselection:`Project --> Properties....`
+
+    3. In the popup menu, select :menuselection:`Java Build Path` from the menu at the left.
+
+    4. In the right panel of the popup menu, select the :menuselection:`Libraries` tab.
+
+    5. Use the :menuselection:`Add External JARs` button to add ``nmdp_speech_kit.jar``.
+
+.. figure:: java_build_path.png
+
+    Enabling Javadoc for the Speech Kit Library in Eclipse
+
+To view the Javadoc for Speech Kit in Eclipse, you must tell Eclipse where to find the class documentation.  This can be done with the following steps:
+
+    1. In the ``Package Explorer`` tab for your project, a ``Referenced Libraries`` heading should appear inside your project.  Expand this heading so that all referenced libraries are visible.
+
+    2. Right click ``nmdp_speech_kit.jar`` and select :menuselection:`Properties`
+
+    3. In the popup menu, select :menuselection:`Javadoc Location` from the menu at the left.
+
+    4. In the right panel of the popup menu, select the ``Javadoc URL`` radio button.
+
+    5. Click the ``Browse`` button to the right of ``Javadoc location path``.
+
+    6. Browse to and select the Speech Kit ``javadoc`` folder.
+
+.. figure:: javadoc_location.png
+
+You also need to add the necessary permissions to ``AndroidManifest.xml`` so that the application can carry out the needed operations.  This can be done as follows:
+
+    1. In the ``Package Explorer`` tab for your project, open ``AndroidManifest.xml``.
+
+    2. Add the following lines immediately before the end of the manifest tag.
+
+    .. code-block:: xml
+
+        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+        <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+        <uses-permission android:name="android.permission.RECORD_AUDIO"></uses-permission>
+        <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+        ...
+        </manifest>
+
+    3. If you want to use prompts that vibrate, you will need to include the following additional permission:
+
+    .. code-block:: xml
+
+        <uses-permission android:name="android.permission.VIBRATE"></uses-permission>
+
+You are now ready to start using recognition and text-to-speech services.
+
+Speech Kit Errors
+-----------------
+While using the Speech Kit library, you will occasionally encounter errors. 
+In this library the ``SpeechError`` class includes ``SpeechError.Codes`` to define the various types of possible errors. 
+
+There are effectively two types of errors that can be expected in this framework.
+
+    * The first type are service connection errors and include the ``SpeechError.Codes.ServerConnectionError`` and ``SpeechError.Codes.ServerRetryError`` codes.
+      These errors indicate that there is some kind of failure in the connection with the speech server.
+      The failure may be temporary, and it can be solved by retrying the query.
+      The error may be the result of an authorization failure or some other network problem.
+
+    * The second type are speech processing errors and include the ``SpeechError.Codes.RecognizerError`` and ``SpeechError.Codes.VocalizerError`` codes.
+      These errors indicate a problem with the speech request, ranging from a text format issue to an audio detection failure.
+
+It is essential to always monitor for errors, as signal conditions may generate errors even in a correctly implemented application. The application's user interface needs to respond appropriately and elegantly to ensure a robust user experience.

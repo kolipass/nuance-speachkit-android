@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Speech Kit Basics &mdash; Dragon Mobile SDK Reference</title>
+    
+    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Dragon Mobile SDK Reference" href="../index.html" />
+    <link rel="up" title="Speech Kit Library Guide" href="Introduction.html" />
+    <link rel="next" title="Connecting to a Speech Server" href="ServerConnection.html" />
+    <link rel="prev" title="Speech Kit Library Guide" href="Introduction.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../Introduction.html">Dragon Mobile SDK Reference</a></div>
+        <div class="rel">
+          <a href="Introduction.html" title="Speech Kit Library Guide"
+             accesskey="P">previous</a> |
+          <a href="ServerConnection.html" title="Connecting to a Speech Server"
+             accesskey="N">next</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="speech-kit-basics">
+<h1>Speech Kit Basics<a class="headerlink" href="#speech-kit-basics" title="Permalink to this headline">¶</a></h1>
+<p>The Speech Kit library allows you to add voice recognition and text-to-speech services to your applications easily and quickly.
+This library provides access to speech processing components hosted on a server through a clean asynchronous network service API, minimizing overhead and resource consumption.
+The Speech Kit library lets you provide fast voice search, dictation, and high-quality, multilingual text-to-speech functionality in your application.</p>
+<div class="section" id="speech-kit-architecture">
+<h2>Speech Kit Architecture<a class="headerlink" href="#speech-kit-architecture" title="Permalink to this headline">¶</a></h2>
+<p>The Speech Kit library is a full-featured, high-level library that automatically manages all the required low-level services.</p>
+<div class="figure">
+<img alt="../_images/speech_kit_architecture.png" src="../_images/speech_kit_architecture.png" />
+<p class="caption">Speech Kit Architecture</p>
+</div>
+<p>At the application level, there are two main components available to the developer: the recognizer and the text-to-speech synthesizer.</p>
+<p>In the library there are several coordinated processes:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The library fully manages the audio system for recording and playback.</li>
+<li>The networking component manages the connection to the server and, at the start of a new request, automatically re-establishes connections that have timed-out.</li>
+<li>The end-of-speech detector determines when the user has stopped speaking and automatically stops recording.</li>
+<li>The encoding component compresses and decompresses the streaming audio to reduce bandwidth requirements and decrease latency.</li>
+</ul>
+</div></blockquote>
+<p>The server system is responsible for the majority of the work in the speech processing cycle.
+The complete recognition or synthesis procedure is performed on the server, consuming or producing the streaming audio.
+In addition, the server manages authentication as configured through the developer portal.</p>
+</div>
+<div class="section" id="using-speech-kit">
+<h2>Using Speech Kit<a class="headerlink" href="#using-speech-kit" title="Permalink to this headline">¶</a></h2>
+<p>To use Speech Kit, you will need to have the Android SDK installed.  Instructions for installing the Android SDK can be found at <a class="reference external" href="http://developer.android.com/sdk/index.html">http://developer.android.com/sdk/index.html</a>.
+You can use the Speech Kit library in the same way that you would use any of the standard jar library.</p>
+<p>To start using the Speech Kit library, add it to your new or existing project, as follows:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Copy the libs folder into the root of the project folder for your android project.  The libs folder contains an <tt class="docutils literal"><span class="pre">armeabi</span></tt> subfolder that contains the file <tt class="docutils literal"><span class="pre">libnmsp_vocoder_speex.so</span></tt>.  This is a native library that is required to use Speech Kit.</li>
+<li>From the menu select <em class="menuselection">Project ‣ Properties....</em></li>
+<li>In the popup menu, select <em class="menuselection">Java Build Path</em> from the menu at the left.</li>
+<li>In the right panel of the popup menu, select the <em class="menuselection">Libraries</em> tab.</li>
+<li>Use the <em class="menuselection">Add External JARs</em> button to add <tt class="docutils literal"><span class="pre">nmdp_speech_kit.jar</span></tt>.</li>
+</ol>
+</div></blockquote>
+<div class="figure">
+<img alt="../_images/java_build_path.png" src="../_images/java_build_path.png" />
+<p class="caption">Enabling Javadoc for the Speech Kit Library in Eclipse</p>
+</div>
+<p>To view the Javadoc for Speech Kit in Eclipse, you must tell Eclipse where to find the class documentation.  This can be done with the following steps:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>In the <tt class="docutils literal"><span class="pre">Package</span> <span class="pre">Explorer</span></tt> tab for your project, a <tt class="docutils literal"><span class="pre">Referenced</span> <span class="pre">Libraries</span></tt> heading should appear inside your project.  Expand this heading so that all referenced libraries are visible.</li>
+<li>Right click <tt class="docutils literal"><span class="pre">nmdp_speech_kit.jar</span></tt> and select <em class="menuselection">Properties</em></li>
+<li>In the popup menu, select <em class="menuselection">Javadoc Location</em> from the menu at the left.</li>
+<li>In the right panel of the popup menu, select the <tt class="docutils literal"><span class="pre">Javadoc</span> <span class="pre">URL</span></tt> radio button.</li>
+<li>Click the <tt class="docutils literal"><span class="pre">Browse</span></tt> button to the right of <tt class="docutils literal"><span class="pre">Javadoc</span> <span class="pre">location</span> <span class="pre">path</span></tt>.</li>
+<li>Browse to and select the Speech Kit <tt class="docutils literal"><span class="pre">javadoc</span></tt> folder.</li>
+</ol>
+</div></blockquote>
+<div class="figure">
+<img alt="../_images/javadoc_location.png" src="../_images/javadoc_location.png" />
+</div>
+<p>You also need to add the necessary permissions to <tt class="docutils literal"><span class="pre">AndroidManifest.xml</span></tt> so that the application can carry out the needed operations.  This can be done as follows:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>In the <tt class="docutils literal"><span class="pre">Package</span> <span class="pre">Explorer</span></tt> tab for your project, open <tt class="docutils literal"><span class="pre">AndroidManifest.xml</span></tt>.</li>
+<li>Add the following lines immediately before the end of the manifest tag.</li>
+</ol>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.ACCESS_NETWORK_STATE&quot;</span><span class="nt">&gt;&lt;/uses-permission&gt;</span>
+<span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.INTERNET&quot;</span><span class="nt">&gt;&lt;/uses-permission&gt;</span>
+<span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.RECORD_AUDIO&quot;</span><span class="nt">&gt;&lt;/uses-permission&gt;</span>
+<span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.READ_PHONE_STATE&quot;</span><span class="nt">&gt;&lt;/uses-permission&gt;</span>
+...
+<span class="nt">&lt;/manifest&gt;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>If you want to use prompts that vibrate, you will need to include the following additional permission:</li>
+</ol>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.VIBRATE&quot;</span><span class="nt">&gt;&lt;/uses-permission&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>You are now ready to start using recognition and text-to-speech services.</p>
+</div>
+<div class="section" id="speech-kit-errors">
+<h2>Speech Kit Errors<a class="headerlink" href="#speech-kit-errors" title="Permalink to this headline">¶</a></h2>
+<p>While using the Speech Kit library, you will occasionally encounter errors.
+In this library the <tt class="docutils literal"><span class="pre">SpeechError</span></tt> class includes <tt class="docutils literal"><span class="pre">SpeechError.Codes</span></tt> to define the various types of possible errors.</p>
+<p>There are effectively two types of errors that can be expected in this framework.</p>
+<blockquote>
+<div><ul class="simple">
+<li>The first type are service connection errors and include the <tt class="docutils literal"><span class="pre">SpeechError.Codes.ServerConnectionError</span></tt> and <tt class="docutils literal"><span class="pre">SpeechError.Codes.ServerRetryError</span></tt> codes.
+These errors indicate that there is some kind of failure in the connection with the speech server.
+The failure may be temporary, and it can be solved by retrying the query.
+The error may be the result of an authorization failure or some other network problem.</li>
+<li>The second type are speech processing errors and include the <tt class="docutils literal"><span class="pre">SpeechError.Codes.RecognizerError</span></tt> and <tt class="docutils literal"><span class="pre">SpeechError.Codes.VocalizerError</span></tt> codes.
+These errors indicate a problem with the speech request, ranging from a text format issue to an audio detection failure.</li>
+</ul>
+</div></blockquote>
+<p>It is essential to always monitor for errors, as signal conditions may generate errors even in a correctly implemented application. The application&#8217;s user interface needs to respond appropriately and elegantly to ensure a robust user experience.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          <h3>Table Of Contents</h3>
+          
+          <h3 style="margin-top: 1.5em;">Search</h3>
+          <form class="search" action="../search.html" method="get">
+            <input type="text" name="q" />
+            <input type="submit" value="Go" />
+            <input type="hidden" name="check_keywords" value="yes" />
+            <input type="hidden" name="area" value="default" />
+          </form>
+          <p class="searchtip" style="font-size: 90%">
+            Enter search terms or a module, class or function name.
+          </p>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <a href="Introduction.html" title="Speech Kit Library Guide"
+             >previous</a> |
+          <a href="ServerConnection.html" title="Connecting to a Speech Server"
+             >next</a>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer">
+        &copy; Copyright 2010, Nuance Communications, Inc.  All Rights Reserved.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>
