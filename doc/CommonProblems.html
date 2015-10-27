@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Solutions to Common Problems &mdash; Dragon Mobile SDK Reference</title>
+    
+    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Dragon Mobile SDK Reference" href="index.html" />
+    <link rel="prev" title="Sample Speech Recognition and Text-to-Speech Application" href="SampleApplication.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+        <div class="headertitle"><a
+          href="Introduction.html">Dragon Mobile SDK Reference</a></div>
+        <div class="rel">
+          <a href="SampleApplication.html" title="Sample Speech Recognition and Text-to-Speech Application"
+             accesskey="P">previous</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="solutions-to-common-problems">
+<h1>Solutions to Common Problems<a class="headerlink" href="#solutions-to-common-problems" title="Permalink to this headline">¶</a></h1>
+<p>This section addresses some frequently occurring issues and ways in which you can solve them.</p>
+<ul>
+<li><p class="first">There are compilation errors in the sample application.  Eclipse warns that <tt class="docutils literal"><span class="pre">&#64;Override</span></tt> is not allowed.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Check to make sure that you have version 1.6 of the Java SDK installed.  The sample application is not compatible with 1.5 or previous versions of Java.</li>
+<li>If you do not have version 1.6 of the Java SDK, it can be downloaded from Oracle&#8217;s website: <a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></li>
+<li>If you have both 1.5 and 1.6 of the Java SDK installed, make sure that Eclipse is set to use 1.6 and not 1.5.</li>
+</ol>
+<p>3a. From the Eclipse menu, select: <em class="menuselection">Window ‣ Prefences</em></p>
+<p>3b. In the <tt class="docutils literal"><span class="pre">Preferences</span></tt> pop-up menu, select <em class="menuselection">Java ‣ Compiler</em> from the menu on the left.</p>
+<p>3c. Make sure the <cite>Compiler compliance level:</cite> is set to <cite>1.6</cite>.</p>
+<ol class="arabic simple" start="4">
+<li>If you have project specific settings enabled, it may be necessary to make this change for the <cite>SampleVoiceApp</cite> project also.</li>
+</ol>
+<p>4a. In the <cite>Package Explorer</cite>, right click <cite>SampleVoiceApp</cite> and choose <cite>Properties</cite> from the drop-down menu.</p>
+<p>4b. In the <cite>Properties for SampleVoiceApp</cite> pop-up window, select <cite>Java Compiler</cite> from the menu on the left.</p>
+<p>4c. Make sure the <cite>Compiler compliance level:</cite> is set to <cite>1.6</cite>.</p>
+</div></blockquote>
+</li>
+<li><p class="first">Speech recognition does not work correctly on the Android Emulator.</p>
+<blockquote>
+<div><p>At the time of this writing, audio capture does not work correctly on the emulator.  It is recommended that an actual device be used for testing.</p>
+</div></blockquote>
+</li>
+<li><p class="first">Changing the display orientation between landscape and portrait causes problems during a recognition or vocalization.</p>
+<blockquote>
+<div><p>Orientation changes on Android cause the current activity to be destroyed and recreated.
+Depending on your implementation, your <tt class="docutils literal"><span class="pre">Vocalizer</span></tt> and/or <tt class="docutils literal"><span class="pre">Recognizer</span></tt> instances may be tied to the old activity instance.
+See SampleVoiceApp&#8217;s <tt class="docutils literal"><span class="pre">TtsView</span></tt> and <tt class="docutils literal"><span class="pre">DictationView</span></tt> for examples of how to deal with this.</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          <h3>Table Of Contents</h3>
+          
+          <h3 style="margin-top: 1.5em;">Search</h3>
+          <form class="search" action="search.html" method="get">
+            <input type="text" name="q" />
+            <input type="submit" value="Go" />
+            <input type="hidden" name="check_keywords" value="yes" />
+            <input type="hidden" name="area" value="default" />
+          </form>
+          <p class="searchtip" style="font-size: 90%">
+            Enter search terms or a module, class or function name.
+          </p>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <a href="SampleApplication.html" title="Sample Speech Recognition and Text-to-Speech Application"
+             >previous</a>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer">
+        &copy; Copyright 2010, Nuance Communications, Inc.  All Rights Reserved.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,20 @@
+Dragon Mobile SDK
+=================
+The Dragon Mobile SDK provides speech services to developers who want to enhance their applications with speech recognition and text-to-speech functionality.
+The Dragon Mobile SDK consists of a variety of code examples and sample projects, documentation, and a simple framework to provide an easy path to integrating speech services into any application.
+
+.. toctree::
+	:hidden:
+	
+	self
+	Speech Kit Guide <SpeechKit_Guide/Introduction>
+	Sample Application <SampleApplication>
+	CommonProblems
+
+Organization of This Document
+-----------------------------
+This document contains the following articles:
+
+	* ":doc:`Speech Kit Guide <SpeechKit_Guide/Introduction>`" provides details of the Speech Kit framework.
+	* ":doc:`SampleApplication`" describes the speech recognition and text-to-speech sample.
+	* ":doc:`CommonProblems`" provides solutions to common problems.

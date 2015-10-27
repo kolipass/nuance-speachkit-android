@@ -1,0 +1,35 @@
+Solutions to Common Problems
+============================
+This section addresses some frequently occurring issues and ways in which you can solve them.
+
+* There are compilation errors in the sample application.  Eclipse warns that ``@Override`` is not allowed.
+
+	1. Check to make sure that you have version 1.6 of the Java SDK installed.  The sample application is not compatible with 1.5 or previous versions of Java.
+
+	2. If you do not have version 1.6 of the Java SDK, it can be downloaded from Oracle's website: http://www.oracle.com/technetwork/java/javase/downloads/index.html
+
+	3. If you have both 1.5 and 1.6 of the Java SDK installed, make sure that Eclipse is set to use 1.6 and not 1.5.
+
+	3a. From the Eclipse menu, select: :menuselection:`Window --> Prefences`
+
+	3b. In the ``Preferences`` pop-up menu, select :menuselection:`Java --> Compiler` from the menu on the left.
+
+	3c. Make sure the `Compiler compliance level:` is set to `1.6`.
+
+	4. If you have project specific settings enabled, it may be necessary to make this change for the `SampleVoiceApp` project also.
+
+	4a. In the `Package Explorer`, right click `SampleVoiceApp` and choose `Properties` from the drop-down menu.
+
+	4b. In the `Properties for SampleVoiceApp` pop-up window, select `Java Compiler` from the menu on the left.
+
+	4c. Make sure the `Compiler compliance level:` is set to `1.6`.
+
+* Speech recognition does not work correctly on the Android Emulator.
+
+	At the time of this writing, audio capture does not work correctly on the emulator.  It is recommended that an actual device be used for testing.
+	
+* Changing the display orientation between landscape and portrait causes problems during a recognition or vocalization.
+
+	Orientation changes on Android cause the current activity to be destroyed and recreated. 
+	Depending on your implementation, your ``Vocalizer`` and/or ``Recognizer`` instances may be tied to the old activity instance.
+	See SampleVoiceApp's ``TtsView`` and ``DictationView`` for examples of how to deal with this.
