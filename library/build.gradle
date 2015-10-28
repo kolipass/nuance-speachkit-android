@@ -12,6 +12,13 @@ android {
         versionName "1.4.12"
         versionCode 14012
     }
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            jniLibs.srcDirs = ['libs']
+            jni.srcDirs = [] //disable automatic ndk-build
+        }
+    }
 }
 dependencies {
     compile fileTree(dir: 'libs', includes: ['*.jar', '*.so'])
