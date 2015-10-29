@@ -1,6 +1,8 @@
 # Nuance Mobile SDK
 
 - [Nuance Languages & Voices | Languages](http://developer.nuance.com//public/index.php?task=supportedLanguages)
+- [HTTP Services 1.0 Programmer’s
+Guide _PDF_ (API)](http://developer.nuance.com/public/Help/HttpInterface/HTTP_web_services_for_NCS_clients_1.0_programmer_s_guide.pdf)
 - [Documentation](http://kolipass.github.io/nuance-speachkit-android/)
  - [javadoc](http://kolipass.github.io/nuance-speachkit-android/javadoc/index.html)
  
