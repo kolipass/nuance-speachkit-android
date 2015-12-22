@@ -14,13 +14,12 @@ import android.widget.TextView;
 
 import com.nuance.nmdp.speechkit.SpeechError;
 import com.nuance.nmdp.speechkit.Vocalizer;
-import com.nuance.wrapper.VocalizerWraper;
 
 public class TtsView extends Activity
 {
     public static final String TTS_KEY = "com.nuance.nmdp.sample.tts";
     
-    private VocalizerWraper _vocalizer;
+    private Vocalizer _vocalizer;
     private Object _lastTtsContext = null;
     
     public TtsView()
@@ -199,7 +198,7 @@ public class TtsView extends Activity
     private class SavedState {
         int TextColor;
         String Text;
-        VocalizerWraper Vocalizer;
+        Vocalizer Vocalizer;
         Object Context;
     }
 }

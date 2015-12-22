@@ -92,7 +92,7 @@ public class DictationView extends Activity
                 if (v == dictationButton)
                     _currentRecognizer = MainView.getSpeechKit().createRecognizer(Recognizer.RecognizerType.Dictation, Recognizer.EndOfSpeechDetection.Long, "ru_RU", _listener, _handler);
                 else
-                    _currentRecognizer = MainView.getSpeechKit().createRecognizer(Recognizer.RecognizerType.Search, Recognizer.EndOfSpeechDetection.Short, "en_US", _listener, _handler);
+                    _currentRecognizer = MainView.getSpeechKit().createRecognizer(Recognizer.RecognizerType.Search, Recognizer.EndOfSpeechDetection.Short, "ru_RU", _listener, _handler);
                 _currentRecognizer.start();
             }
         };

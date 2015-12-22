@@ -7,14 +7,14 @@ import android.view.View;
 import android.widget.Button;
 
 import com.nuance.nmdp.speechkit.Prompt;
-import com.nuance.wrapper.SpeechKitWrapper;
+import com.nuance.nmdp.speechkit.SpeechKit;
 
 public class MainView extends Activity {
     
-    private static SpeechKitWrapper _speechKit;
+    private static SpeechKit _speechKit;
     
     // Allow other activities to access the SpeechKit instance.
-    static SpeechKitWrapper getSpeechKit()
+    static SpeechKit getSpeechKit()
     {
         return _speechKit;
     }
@@ -27,10 +27,10 @@ public class MainView extends Activity {
         
         // If this Activity is being recreated due to a config change (e.g. 
         // screen rotation), check for the saved SpeechKit instance.
-        _speechKit = (SpeechKitWrapper)getLastNonConfigurationInstance();
+        _speechKit = (SpeechKit)getLastNonConfigurationInstance();
         if (_speechKit == null)
         {
-            _speechKit = SpeechKitWrapper.initialize(getApplication().getApplicationContext(), AppInfo.SpeechKitAppId, AppInfo.SpeechKitServer, AppInfo.SpeechKitPort, AppInfo.SpeechKitSsl, AppInfo.SpeechKitApplicationKey);
+            _speechKit = SpeechKit.initialize(getApplication().getApplicationContext(), AppInfo.SpeechKitAppId, AppInfo.SpeechKitServer, AppInfo.SpeechKitPort, AppInfo.SpeechKitSsl, AppInfo.SpeechKitApplicationKey);
             _speechKit.connect();
             // TODO: Keep an eye out for audio prompts not working on the Droid 2 or other 2.2 devices.
             Prompt beep = _speechKit.defineAudioPrompt(R.raw.beep);
@@ -75,7 +75,7 @@ public class MainView extends Activity {
     {
         // Save the SpeechKit instance, because we know the Activity will be
         // immediately recreated.
-        SpeechKitWrapper sk = _speechKit;
+        SpeechKit sk = _speechKit;
         _speechKit = null; // Prevent onDestroy() from releasing SpeechKit
         return sk;
     }
