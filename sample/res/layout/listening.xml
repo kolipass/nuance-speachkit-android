@@ -11,23 +11,23 @@
       android:id="@+id/text_listeningStatus"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Listening..."></TextView>
+      android:text="Listening..."/>
 
   <ProgressBar
       android:id="@+id/progress_listening"
       android:layout_width="wrap_content"
-      android:layout_height="wrap_content"></ProgressBar>
+      android:layout_height="wrap_content"/>
 
   <TextView
       android:id="@+id/text_recordLevel"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Level"></TextView>
+      android:text="Level"/>
 
   <Button
       android:id="@+id/btn_listeningStop"
       android:layout_width="fill_parent"
       android:layout_height="wrap_content"
-      android:text="@string/button_stop"></Button>
+      android:text="@string/button_stop"/>
 
 </LinearLayout>

@@ -4,7 +4,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion '23.0.1'
+    buildToolsVersion '23.0.2'
 
     defaultConfig {
         minSdkVersion 14
@@ -17,6 +17,10 @@ android {
             manifest.srcFile 'AndroidManifest.xml'
             jniLibs.srcDirs = ['libs']
             jni.srcDirs = [] //disable automatic ndk-build
+            java.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
         }
     }
 }

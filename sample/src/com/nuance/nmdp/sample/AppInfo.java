@@ -27,17 +27,14 @@ public class AppInfo
      */
 
     /* Please contact Nuance to receive the necessary connection and login parameters */
-    public static final String SpeechKitServer = "" /* Enter your server here */;
+    public static final String SpeechKitServer = "sandbox.nmdp.nuancemobility.net" /* Enter your server here */;
 
-    public static final int SpeechKitPort = 0/* Enter your port here */;
+    public static final int SpeechKitPort = 443/* Enter your port here */;
     
     public static final boolean SpeechKitSsl = false;
 
-    public static final String SpeechKitAppId = ""/* Enter your ID here */;
+    public static final String SpeechKitAppId = "NMDPTRIAL_kolipass_gmail_com20151027051630"/* Enter your ID here */;
 
-    public static final byte[] SpeechKitApplicationKey = {
-        /* Enter your application key here:
-        (byte)0x00, (byte)0x01, ... (byte)0x00
-        */
-    };
+    public static final byte[] SpeechKitApplicationKey = {(byte)0xe3, (byte)0xbe, (byte)0xbb, (byte)0x18, (byte)0x8d, (byte)0x5f, (byte)0xf7, (byte)0xb5, (byte)0x7f, (byte)0xe6, (byte)0xcd, (byte)0x99, (byte)0x28, (byte)0x54, (byte)0x01, (byte)0x7d, (byte)0xe3, (byte)0xce, (byte)0xa4, (byte)0xcb, (byte)0xe5, (byte)0xb8, (byte)0x2b, (byte)0x55, (byte)0x43, (byte)0x6a, (byte)0x3d, (byte)0x73, (byte)0x93, (byte)0x04, (byte)0x63, (byte)0x76, (byte)0xc2, (byte)0x1f, (byte)0x8e, (byte)0x4f, (byte)0x7e, (byte)0x85, (byte)0x04, (byte)0xfe, (byte)0x6b, (byte)0xd1, (byte)0x97, (byte)0x93, (byte)0x25, (byte)0x98, (byte)0x10, (byte)0x08, (byte)0x66, (byte)0xb4, (byte)0xd4, (byte)0x4b, (byte)0x6c, (byte)0xff, (byte)0xa1, (byte)0xaf, (byte)0x69, (byte)0xde, (byte)0x22, (byte)0xfc, (byte)0xe2, (byte)0x86, (byte)0x73, (byte)0xa4};
+
 }

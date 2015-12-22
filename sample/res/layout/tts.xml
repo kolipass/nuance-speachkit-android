@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical">
-<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/title_tts"></TextView>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/title_tts"/>
 
   <EditText
       android:id="@+id/text_ttsSource"
@@ -12,28 +12,28 @@
       android:layout_height="wrap_content"
       android:gravity="top|left"
       android:minLines="4"
-      android:text="This is a test. This is only a test."></EditText>
+      android:text="This is a test. This is only a test."/>
 
   <Spinner
       android:id="@+id/spin_ttsVoice"
       android:layout_width="fill_parent"
       android:layout_height="wrap_content"
-      android:entries="@array/arr_ttsVoices"></Spinner>
+      android:entries="@array/arr_ttsVoices"/>
 
   <Button
       android:id="@+id/btn_startTts"
       android:layout_width="fill_parent"
       android:layout_height="wrap_content"
-      android:text="@string/button_startTts"></Button>
+      android:text="@string/button_startTts"/>
 
   <Button
       android:id="@+id/btn_stopTts"
       android:layout_width="fill_parent"
       android:layout_height="wrap_content"
-      android:text="@string/button_stop"></Button>
+      android:text="@string/button_stop"/>
 
   <TextView
       android:id="@+id/text_currentTts"
       android:layout_width="wrap_content"
-      android:layout_height="wrap_content"></TextView>
+      android:layout_height="wrap_content"/>
 </LinearLayout>

@@ -12,11 +12,11 @@
         android:id="@+id/btn_dictation"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button_dictation"></Button>
+        android:text="@string/button_dictation"/>
 
     <Button
         android:id="@+id/btn_tts"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button_tts"></Button>
+        android:text="@string/button_tts"/>
 </LinearLayout>
